@@ -5,6 +5,11 @@ import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
 import { TasksContainer } from "./components/TasksContainer";
 
+export type Task = {
+  text: string;
+  isFinished: boolean;
+};
+
 export function App() {
   return (
     <>
@@ -12,7 +17,7 @@ export function App() {
 
       <main className={styles.content}>
         <NewTask />
-        <TasksContainer />
+        <TasksContainer tasks={[]} />
       </main>
     </>
   );

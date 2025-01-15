@@ -1,10 +1,11 @@
+import { HTMLProps } from "react";
 import styles from "./Divider.module.css";
 
-interface DividerProps {
+interface DividerProps extends HTMLProps<HTMLHRElement> {
   orientation?: "horizontal" | "vertical";
 }
 
-export function Divider({ orientation = "horizontal" }: DividerProps) {
+export function Divider({ orientation = "horizontal", ...rest }: DividerProps) {
   return (
     <hr
       className={styles.divider}
@@ -12,6 +13,7 @@ export function Divider({ orientation = "horizontal" }: DividerProps) {
         width: orientation === "horizontal" ? "100%" : "1px",
         height: orientation === "horizontal" ? "1px" : "100%",
       }}
+      {...rest}
     />
   );
 }
