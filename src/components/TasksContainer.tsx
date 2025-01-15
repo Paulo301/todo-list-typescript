@@ -13,12 +13,26 @@ export function TasksContainer({ tasks }: TasksContainerProps) {
   return (
     <div className={styles.container}>
       <div className={styles.tasksProgress}>
-        <ProgressIndicator name="Tarefas criadas" value="0" />
-        <ProgressIndicator name="Concluídas" value="0" nameColor="purple" />
+        <ProgressIndicator name="Tarefas criadas" value={`${tasks.length}`} />
+        <ProgressIndicator
+          name="Concluídas"
+          value={
+            tasks.length === 0
+              ? "0"
+              : `${tasks.filter((task) => task.isFinished).length} de ${
+                  tasks.length
+                }`
+          }
+          nameColor="purple"
+        />
       </div>
 
       {tasks.length > 0 ? (
-        tasks.map((task) => <TaskComponent />)
+        <div className={styles.tasksList}>
+          {tasks.map((task) => (
+            <TaskComponent task={task} />
+          ))}
+        </div>
       ) : (
         <>
           <Divider style={{ marginTop: "1.5rem" }} />

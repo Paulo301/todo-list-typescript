@@ -1,0 +1,9 @@
+.container {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
